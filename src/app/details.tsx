@@ -1,34 +1,34 @@
+import { Stack, useLocalSearchParams } from "expo-router";
 import { useEffect } from "react";
-import { ScrollView, StyleSheet } from "react-native";
-import { useLocalSearchParams } from "../../.expo/types/router";
+import { ScrollView, StyleSheet, Text } from "react-native";
 
 export default function Details() {
   const params = useLocalSearchParams();
 
-  console.log("Params:", params);
+  console.log(params.name);
 
   useEffect(() => {
     // You can use the params to fetch additional data if needed
-  }, [params]);
+  }, []);
 
   async function fetchPokemonByName(name: string) {
-    // Fetch additional details about the Pokemon if needed
-    try {
-      const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
-      const data = await response.json();
-      console.log("Fetched Pokemon Details:", data);
-    } catch (error) {
-      console.error("Error fetching Pokemon details:", error);
-    }
+    // try {
+    //} catch (error) {}
   }
 
   return (
-    <ScrollView
-      contentContainerStyle={{
-        gap: 16,
-        padding: 20,
-      }}
-    ></ScrollView>
+    <>
+      <Stack.Screen options={{ title: params.name as string }} />
+      <ScrollView
+        contentContainerStyle={{
+          gap: 16,
+          padding: 16,
+          backgroundColor: "red",
+        }}
+      >
+        <Text>{params.name}</Text>
+      </ScrollView>
+    </>
   );
 }
 
