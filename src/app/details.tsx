@@ -23,10 +23,10 @@ export default function Details() {
         contentContainerStyle={{
           gap: 16,
           padding: 16,
-          backgroundColor: "red",
         }}
       >
-        <Text>{params.name}</Text>
+        {/* <Text>{params.name}</Text> */}
+        <Text style={{ fontSize: 24, fontWeight: "bold" }}>{params.name}</Text>
       </ScrollView>
     </>
   );
